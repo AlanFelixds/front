@@ -20,7 +20,7 @@ class LoginPage extends GetResponsiveView<LoginController> {
             Expanded(
               child: Container(
                 height: Get.height,
-                color: const Color(0xFF295cc5),
+                color: const Color(0xFF90EE90),
                 child: Center(
                   child: Image.network(
                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwDD_mgWBt4Q_YwGuFIqOU8Dv-GZM8q-_ZWg&usqp=CAU",
