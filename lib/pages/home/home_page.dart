@@ -10,7 +10,7 @@ class HomePage extends GetResponsiveView<HomeController> {
     return Scaffold(
       body: Row(
         children: [
-          Container(
+          SizedBox(
             width: 300,
             child: Container(
               color: Colors.blue,
@@ -27,7 +27,7 @@ class HomePage extends GetResponsiveView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       width: 250,
                       child: TextButton(
                         onPressed: () {
@@ -44,7 +44,7 @@ class HomePage extends GetResponsiveView<HomeController> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       width: 250,
                       child: TextButton(
                         onPressed: () {

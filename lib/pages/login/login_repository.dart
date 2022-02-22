@@ -1,13 +1,15 @@
+import 'package:front_flutter/models/user_model.dart';
 import 'package:front_flutter/utils/web_service/web_service.dart';
 
 class LoginRepository {
   final WebService webService;
   LoginRepository(this.webService);
 
-  Future<void> login(user, password) async {
-    final response = webService.postResponse('login', {
-      'user': user,
-      'password': password,
-    });
+  Future<UserModel> signIn(UserModel userModel) async {
+    final Map<String, Object?> body = userModel.toMapLogin();
+    final Map<String, dynamic> response = await webService.postResponse('/signin', body);
+
+    if (response['code'] == 10) throw 'Usuário não encontrado';
+    return UserModel.fromMap(response);
   }
 }

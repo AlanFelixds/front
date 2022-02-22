@@ -11,8 +11,8 @@ class SignupController extends GetxController {
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
 
-  callRepository() {
-    signupRepository.createUserF(nameController.text, passwordController.text, emailController.text);
+  createUser() {
+    signupRepository.signup(nameController.text, passwordController.text, emailController.text);
   }
 
   goToLogin() {

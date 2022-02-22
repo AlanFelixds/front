@@ -35,6 +35,13 @@ class UserModel {
     };
   }
 
+  Map<String, dynamic> toMapLogin() {
+    return {
+      'user': user,
+      'password': password,
+    };
+  }
+
   factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
       user: map['user'] ?? '',

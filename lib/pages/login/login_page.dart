@@ -1,7 +1,6 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:front_flutter/pages/login/login_controller.dart';
+import 'package:front_flutter/utils/themes/color_palette.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends GetResponsiveView<LoginController> {
@@ -20,11 +19,9 @@ class LoginPage extends GetResponsiveView<LoginController> {
             Expanded(
               child: Container(
                 height: Get.height,
-                color: const Color(0xFF90EE90),
+                color: ThemeColors.appBackground,
                 child: Center(
-                  child: Image.network(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwDD_mgWBt4Q_YwGuFIqOU8Dv-GZM8q-_ZWg&usqp=CAU",
-                  ),
+                  child: Image.asset('assets/images/logo.jpg'),
                 ),
               ),
             ),
@@ -32,7 +29,7 @@ class LoginPage extends GetResponsiveView<LoginController> {
               child: SizedBox(
                 height: Get.height,
                 child: Center(
-                  child: Container(
+                  child: SizedBox(
                     width: 300,
                     height: 300,
                     child: Column(
@@ -40,16 +37,8 @@ class LoginPage extends GetResponsiveView<LoginController> {
                         CustomTextFormField(controller: controller.userController, label: 'Email', icon: const Icon(Icons.alternate_email_rounded), context: context),
                         CustomTextFormField(controller: controller.passwordController, label: 'Password', icon: const Icon(Icons.lock_outline), context: context),
                         Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [Text("Recovery password "), Text(" Remember me")]),
-                        CustomElevatedButton(
-                            onPressed: () {
-                              controller.goToHome();
-                            },
-                            label: 'Sing in'),
-                        TextButton(
-                            onPressed: () {
-                              controller.goToSignup();
-                            },
-                            child: const Text('Não possue uma conta ? Clique aqui'))
+                        CustomElevatedButton(onPressed: () => controller.login(), label: 'Sing in'),
+                        TextButton(onPressed: () => controller.goToSignup(), child: const Text('Não possue uma conta ? Clique aqui'))
                       ],
                     ),
                   ),

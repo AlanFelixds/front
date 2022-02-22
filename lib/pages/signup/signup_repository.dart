@@ -4,8 +4,8 @@ class SignupRepository {
   final WebService webService;
   SignupRepository(this.webService);
 
-  Future<void> createUserF(user, password, email) async {
-    final response = webService.postResponse('createUser', {
+  Future<void> signup(user, password, email) async {
+    final response = webService.postResponse('/signup', {
       'user': user,
       'password': password,
       'email': email,

@@ -11,6 +11,7 @@ import 'package:front_flutter/pages/signup/signup_page.dart';
 import 'package:front_flutter/pages/solicitar_certificado/solicitar_certificado_binding.dart';
 import 'package:front_flutter/pages/solicitar_certificado/solicitar_certificado_page.dart';
 import 'package:front_flutter/pages/unknown/unknown_page.dart';
+import 'package:front_flutter/utils/customs/custom_menu2.dart';
 import 'package:get/get.dart';
 
 class Routes {
@@ -22,5 +23,6 @@ class Routes {
     GetPage(name: "/listaSolicitacoes", page: () => ListaSolicitacoesPage(), binding: ListaSolicitacoesBinding(), preventDuplicates: true, participatesInRootNavigator: true),
     GetPage(name: "/event-detail", page: () => EventDetailPage(), binding: EventDetailBinding(), preventDuplicates: true, participatesInRootNavigator: true),
     GetPage(name: "/unknown", page: () => const UnknownPage()),
+    GetPage(name: "/customMenu", page: () => const CustomMenu2()),
   ];
 }

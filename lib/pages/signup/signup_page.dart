@@ -18,7 +18,7 @@ class SignupPage extends GetResponsiveView<SignupController> {
             Container(
               width: Get.width,
               height: Get.height,
-              color: Color.fromARGB(255, 50, 190, 29),
+              color: const Color.fromARGB(255, 50, 190, 29),
               child: Image.network(
                 'https://cdni.iconscout.com/illustration/premium/thumb/male-and-female-employee-doing-online-marketing-2985914-2490959.png',
                 color: Colors.white.withOpacity(0.2),
@@ -48,7 +48,7 @@ class SignupPage extends GetResponsiveView<SignupController> {
                           CustomTextFormField(controller: controller.nameController, label: 'Nome', icon: const Icon(Icons.account_circle_rounded), context: context),
                           CustomTextFormField(controller: controller.emailController, label: 'Email', icon: const Icon(Icons.alternate_email_rounded), context: context),
                           CustomTextFormField(controller: controller.passwordController, label: 'Password', icon: const Icon(Icons.lock_outline), context: context),
-                          CustomElevatedButton(onPressed: () {}, label: 'Sing in'),
+                          CustomElevatedButton(onPressed: () => controller.createUser(), label: 'Sing in'),
                         ],
                       ),
                     ),
