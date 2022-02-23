@@ -15,7 +15,10 @@ class HomePage extends GetResponsiveView<HomeController> {
         children: [
           const CustomMenu2(),
           Expanded(
-            child: Container(color: ThemeColors.appBackground),
+            child: Container(
+              color: ThemeColors.appBackground,
+              child: Text("${controller.user.user}"),
+            ),
           ),
         ],
       ),

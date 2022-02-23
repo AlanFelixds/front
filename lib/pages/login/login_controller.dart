@@ -11,8 +11,8 @@ class LoginController extends GetxController {
   final LoginRepository loginRepository;
   LoginController(this.loginRepository);
 
-  final userController = TextEditingController();
-  final passwordController = TextEditingController();
+  final userController = TextEditingController(text: 'root');
+  final passwordController = TextEditingController(text: 'root');
 
   RxBool blCheckBox = false.obs;
 
@@ -34,11 +34,12 @@ class LoginController extends GetxController {
       userModel.user = userController.text;
       userModel.password = passwordController.text;
       userModel = await loginRepository.signIn(userModel);
+      print(userModel);
       if (blCheckBox.value == true) {
         LocalStorage.saveDataLocal(key: 'user', value: userModel.user!, option: 'String');
         LocalStorage.saveDataLocal(key: 'saveUser', value: blCheckBox.value, option: 'Bool');
       }
-      goToHome();
+      goToHome(userModel);
     } catch (e) {
       log("Error: Function SignIn. Excessão: " + e.toString());
     }
@@ -48,7 +49,7 @@ class LoginController extends GetxController {
     Get.toNamed(NamedRoutes.SIGNUP);
   }
 
-  goToHome() {
-    Get.toNamed(NamedRoutes.HOME);
+  goToHome(UserModel userModel) {
+    Get.toNamed(NamedRoutes.HOME, arguments: userModel);
   }
 }

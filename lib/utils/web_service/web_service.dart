@@ -35,6 +35,8 @@ class WebService extends GetConnect {
   }
 
   dynamic manageResponse(Response response) {
+    print(response.body);
+
     switch (response.statusCode) {
       case 200:
         return response.body;

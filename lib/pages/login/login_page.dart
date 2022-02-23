@@ -20,9 +20,9 @@ class LoginPage extends GetResponsiveView<LoginController> {
               child: Container(
                 height: Get.height,
                 color: ThemeColors.appBackgroundLogin,
-                child: Center(
-                  child: Image.asset('assets/images/logo.jpg'),
-                ),
+                // child: Center(
+                //   child: Image.asset('assets/images/logo.jpg'),
+                // ),
               ),
             ),
             Expanded(

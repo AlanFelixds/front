@@ -30,7 +30,7 @@ class SignupPage extends GetResponsiveView<SignupController> {
               child: Container(
                 width: Get.width * .8,
                 height: Get.height * .8,
-                color: Colors.green[50],
+                color: Colors.white,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
