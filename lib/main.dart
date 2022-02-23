@@ -5,8 +5,7 @@ import 'package:get/get.dart';
 
 void main() {
   runApp(GetMaterialApp(
-    // initialRoute: NamedRoutes.LOGIN,
-    initialRoute: NamedRoutes.CUSTOMMENU,
+    initialRoute: NamedRoutes.LOGIN,
     getPages: Routes.pages,
     unknownRoute: Routes.pages[3],
     enableLog: true,

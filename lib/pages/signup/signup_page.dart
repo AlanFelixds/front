@@ -9,7 +9,7 @@ class SignupPage extends GetResponsiveView<SignupController> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        return false;
+        return true;
       },
       child: Scaffold(
         backgroundColor: Colors.white,

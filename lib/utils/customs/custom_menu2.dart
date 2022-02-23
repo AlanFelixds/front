@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_flutter/utils/customs/custom_button_drawer.dart';
 import 'package:front_flutter/utils/themes/color_palette.dart';
 import 'package:get/get.dart';
 
@@ -8,27 +9,38 @@ class CustomMenu2 extends GetView {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: Get.width,
       height: Get.height,
-      child: Row(
-        children: [
-          Container(
-            width: 300,
-            height: Get.height,
-            color: ThemeColors.appDrawer,
-            child: Column(
+      child: SingleChildScrollView(
+        child: Row(
+          children: [
+            Column(
               children: [
-                buttonDrawer2('Home'),
-                buttonDrawer2('Solicitações'),
-                buttonDrawer2('Sair'),
+                Container(
+                  width: 300,
+                  height: Get.height,
+                  color: ThemeColors.appDrawer,
+                  child: Column(
+                    children: [
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: 220,
+                        height: 220,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.asset('assets/images/logo_drawer.png'),
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      CustomButtonDrawer(label: 'Home', icon: const Icon(Icons.home), onPressed: () {}),
+                      CustomButtonDrawer(label: 'Solicitações', icon: const Icon(Icons.description), onPressed: () {}),
+                      CustomButtonDrawer(label: 'Logout', icon: const Icon(Icons.logout), onPressed: () {}),
+                    ],
+                  ),
+                ),
               ],
             ),
-          ),
-          const Expanded(
-              child: Center(
-            child: Text("body"),
-          ))
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -44,7 +56,6 @@ class CustomMenu2 extends GetView {
       splashColor: Colors.red,
       onPressed: () {},
       child: Row(
-        mainAxisSize: MainAxisSize.min,
         children: [
           const Icon(Icons.home),
           Text(label),
@@ -69,7 +80,9 @@ class CustomMenu2 extends GetView {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
+              const SizedBox(width: 5),
               const Icon(Icons.home),
+              const SizedBox(width: 10),
               Text(label),
             ],
           ),

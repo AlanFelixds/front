@@ -13,13 +13,13 @@ class LoginPage extends GetResponsiveView<LoginController> {
         return false;
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: ThemeColors.white,
         body: Row(
           children: [
             Expanded(
               child: Container(
                 height: Get.height,
-                color: ThemeColors.appBackground,
+                color: ThemeColors.appBackgroundLogin,
                 child: Center(
                   child: Image.asset('assets/images/logo.jpg'),
                 ),
@@ -29,14 +29,35 @@ class LoginPage extends GetResponsiveView<LoginController> {
               child: SizedBox(
                 height: Get.height,
                 child: Center(
-                  child: SizedBox(
-                    width: 300,
-                    height: 300,
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(color: ThemeColors.appDrawer),
+                    ),
+                    width: 400,
+                    height: 450,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CustomTextFormField(controller: controller.userController, label: 'Email', icon: const Icon(Icons.alternate_email_rounded), context: context),
                         CustomTextFormField(controller: controller.passwordController, label: 'Password', icon: const Icon(Icons.lock_outline), context: context),
-                        Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: const [Text("Recovery password "), Text(" Remember me")]),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Obx(() {
+                              return TextButton.icon(
+                                onPressed: () => controller.blCheckBox.value = !controller.blCheckBox.value,
+                                icon: controller.blCheckBox.value ? const Icon(Icons.check_box_rounded) : const Icon(Icons.check_box_outline_blank_rounded),
+                                label: const Text("Remember me"),
+                              );
+                            }),
+                            TextButton(
+                              onPressed: () {},
+                              child: const Text("Forgot password ?"),
+                            ),
+                          ],
+                        ),
                         CustomElevatedButton(onPressed: () => controller.login(), label: 'Sing in'),
                         TextButton(onPressed: () => controller.goToSignup(), child: const Text('Não possue uma conta ? Clique aqui'))
                       ],
