@@ -9,4 +9,8 @@ class HomeController extends GetxController {
   final arguments = Get.arguments;
 
   UserModel user = Get.arguments;
+
+  goToSolicitar() {
+    Get.toNamed('/solicitarCertificado');
+  }
 }

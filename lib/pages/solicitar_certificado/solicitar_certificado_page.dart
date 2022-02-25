@@ -7,9 +7,9 @@ class SolicitarCertificadoPage extends GetResponsiveView<SolicitarCertificadoCon
   SolicitarCertificadoPage({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget builder() {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: Get.width,
         height: Get.height,
         child: Row(
@@ -44,21 +44,9 @@ class SolicitarCertificadoPage extends GetResponsiveView<SolicitarCertificadoCon
                                 CustomTextFormField(controller: controller.eventTeacherEmailController, hint: 'Email', icon: const Icon(Icons.email), label: "Email", width: 300, height: 40),
                               ],
                             ),
-                            const Text("Dados do participante", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-                            Wrap(
-                              alignment: WrapAlignment.start,
-                              crossAxisAlignment: WrapCrossAlignment.center,
-                              spacing: 25,
-                              children: [
-                                CustomTextFormField(controller: controller.participantNameController, hint: 'Nome', icon: const Icon(Icons.takeout_dining_sharp), label: "Nome", width: 300, height: 40),
-                                CustomTextFormField(controller: controller.participantEmailController, hint: 'Email', icon: const Icon(Icons.takeout_dining_sharp), label: "Email", width: 300, height: 40),
-                                ElevatedButton(
-                                  onPressed: () {
-                                    controller.addParticipante();
-                                  },
-                                  child: const Text("Cadastrar participantes"),
-                                ),
-                              ],
+                            ElevatedButton(
+                              onPressed: () => controller.addEvent(),
+                              child: const Text("Cadastrar evento"),
                             ),
                           ],
                         ),
@@ -70,23 +58,37 @@ class SolicitarCertificadoPage extends GetResponsiveView<SolicitarCertificadoCon
                     height: 300,
                     child: Obx(
                       () {
-                        return ListView.separated(
-                          separatorBuilder: (context, index) => const Divider(height: 2, indent: 2, endIndent: 2),
-                          shrinkWrap: true,
-                          itemCount: controller.participants.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              title: Text("${controller.participants[index].name}"),
-                              subtitle: Text("${controller.participants[index].email}"),
-                              trailing: IconButton(
-                                onPressed: () {
-                                  controller.participants.remove(controller.participants[index]);
-                                },
-                                icon: const Icon(Icons.delete_forever),
-                                splashRadius: 20,
-                              ),
-                            );
-                          },
+                        return Card(
+                          child: ListView.separated(
+                            separatorBuilder: (context, index) => const Divider(height: 2, indent: 2, endIndent: 2),
+                            shrinkWrap: true,
+                            itemCount: controller.events.length,
+                            itemBuilder: (context, index) {
+                              return ListTile(
+                                title: Text("${controller.events[index].eventName}"),
+                                subtitle: Text("${controller.events[index].eventDate}"),
+                                trailing: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () async {
+                                        await dialogToAddParticipants();
+                                      },
+                                      icon: const Icon(Icons.add_reaction_outlined),
+                                      splashRadius: 20,
+                                    ),
+                                    IconButton(
+                                      onPressed: () {
+                                        controller.events.remove(controller.events[index]);
+                                      },
+                                      icon: const Icon(Icons.delete_forever),
+                                      splashRadius: 20,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         );
                       },
                     ),
@@ -118,5 +120,78 @@ class SolicitarCertificadoPage extends GetResponsiveView<SolicitarCertificadoCon
         ),
       ),
     );
+  }
+
+  Future<void> dialogToAddParticipants() async {
+    await Get.dialog(Dialog(
+      backgroundColor: Colors.white,
+      child: Container(
+        width: screen.isDesktop ? 700 : 100,
+        padding: screen.isDesktop ? const EdgeInsets.symmetric(horizontal: 12) : null,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Wrap(
+              alignment: WrapAlignment.end,
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 35,
+              children: [
+                CustomTextFormField(controller: controller.participantNameController, hint: 'Nome', icon: const Icon(Icons.takeout_dining_sharp), label: "Nome", width: 300, height: 40),
+                CustomTextFormField(controller: controller.participantEmailController, hint: 'Email', icon: const Icon(Icons.takeout_dining_sharp), label: "Email", width: 300, height: 40),
+                ElevatedButton(
+                  onPressed: () => controller.addParticipante(),
+                  child: const Text("Cadastrar"),
+                ),
+              ],
+            ),
+            SizedBox(
+              width: 700,
+              height: 300,
+              child: Obx(
+                () {
+                  return ListView.separated(
+                    separatorBuilder: (context, index) => const Divider(height: 2, indent: 2, endIndent: 2),
+                    shrinkWrap: true,
+                    itemCount: controller.participants.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text("${controller.participants[index].name}"),
+                        subtitle: Text("${controller.participants[index].email}"),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                controller.events.remove(controller.participants[index]);
+                              },
+                              icon: const Icon(Icons.delete_forever),
+                              splashRadius: 20,
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+            SizedBox(
+              width: 700,
+              height: 40,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    onPressed: () => controller.addParticipante(),
+                    child: const Text("Concluir cadastro"),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
   }
 }

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:front_flutter/utils/controller/routeController.dart';
 import 'package:front_flutter/utils/customs/custom_button_drawer.dart';
 import 'package:front_flutter/utils/themes/color_palette.dart';
 import 'package:get/get.dart';
 
-class CustomMenu2 extends GetView {
-  const CustomMenu2({Key? key}) : super(key: key);
+class CustomMenu2 extends GetView<RouteController> {
+  const CustomMenu2({Key? key, this.routeCall}) : super(key: key);
+
+  final VoidCallback? routeCall;
 
   @override
   Widget build(BuildContext context) {
+    Get.lazyPut<RouteController>(() => RouteController());
     return SizedBox(
       height: Get.height,
       child: SingleChildScrollView(
@@ -31,9 +35,9 @@ class CustomMenu2 extends GetView {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      CustomButtonDrawer(label: 'Home', icon: const Icon(Icons.home), onPressed: () {}),
-                      CustomButtonDrawer(label: 'Solicitações', icon: const Icon(Icons.description), onPressed: () {}),
-                      CustomButtonDrawer(label: 'Logout', icon: const Icon(Icons.logout), onPressed: () {}),
+                      CustomButtonDrawer(label: 'Home', icon: const Icon(Icons.home), onPressed: () => controller.goToHome()),
+                      CustomButtonDrawer(label: 'Solicitações', icon: const Icon(Icons.description), onPressed: () => controller.goToSolicitarCertificado()),
+                      CustomButtonDrawer(label: 'Logout', icon: const Icon(Icons.logout), onPressed: () => controller.goToLogout()),
                     ],
                   ),
                 ),

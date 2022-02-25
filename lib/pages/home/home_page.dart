@@ -13,7 +13,9 @@ class HomePage extends GetResponsiveView<HomeController> {
       // drawer: const CustomMenu2(),
       body: Row(
         children: [
-          const CustomMenu2(),
+          CustomMenu2(
+            routeCall: () => controller.goToSolicitar(),
+          ),
           Expanded(
             child: Container(
               color: ThemeColors.appBackground,

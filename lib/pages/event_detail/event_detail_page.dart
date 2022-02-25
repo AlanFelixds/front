@@ -11,12 +11,12 @@ class EventDetailPage extends GetResponsiveView<EventDetailController> {
     return Scaffold(
       body: Row(
         children: [
-          Container(
+          SizedBox(
             width: 300,
             child: Container(
               color: Colors.blue,
               child: Column(
-                children: [CustomMenu()],
+                children: const [CustomMenu()],
               ),
             ),
           ),
@@ -27,7 +27,7 @@ class EventDetailPage extends GetResponsiveView<EventDetailController> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Container(
+                    SizedBox(
                       width: 500,
                       child: Card(
                         child: Row(
@@ -41,7 +41,7 @@ class EventDetailPage extends GetResponsiveView<EventDetailController> {
                     ),
                     Column(
                       children: [
-                        Container(
+                        SizedBox(
                           width: 500,
                           child: Card(
                             child: Column(
@@ -50,21 +50,21 @@ class EventDetailPage extends GetResponsiveView<EventDetailController> {
                               children: [
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
+                                  children: const [
                                     Text("nome: Alan"),
                                     Text("email: Alan@gmail.com"),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
+                                  children: const [
                                     Text("nome: Alan"),
                                     Text("email: Alan@gmail.com"),
                                   ],
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                  children: [
+                                  children: const [
                                     Text("nome: Alan"),
                                     Text("email: Alan@gmail.com"),
                                   ],
