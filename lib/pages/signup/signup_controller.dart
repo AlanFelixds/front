@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_flutter/pages/signup/signup_repository.dart';
-import 'package:front_flutter/utils/routes/const_named_routes.dart';
+import 'package:front_flutter/utils/routes/routes.dart';
 import 'package:get/get.dart';
 
 class SignupController extends GetxController {
@@ -17,6 +17,6 @@ class SignupController extends GetxController {
 
   goToLogin() {
     // Get.offAllNamed(NamedRoutes.LOGIN);
-    Get.toNamed(NamedRoutes.LOGIN);
+    Get.toNamed(Routes.login);
   }
 }

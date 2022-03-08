@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:front_flutter/pages/event_detail/event_detail_controller.dart';
-import 'package:front_flutter/utils/customs/custom_menu.dart';
 import 'package:get/get.dart';
 
 class EventDetailPage extends GetResponsiveView<EventDetailController> {
@@ -11,15 +10,15 @@ class EventDetailPage extends GetResponsiveView<EventDetailController> {
     return Scaffold(
       body: Row(
         children: [
-          SizedBox(
-            width: 300,
-            child: Container(
-              color: Colors.blue,
-              child: Column(
-                children: const [CustomMenu()],
-              ),
-            ),
-          ),
+          // SizedBox(
+          //   width: 300,
+          //   child: Container(
+          //     color: Colors.blue,
+          //     child: Column(
+          //       children: const [CustomMenu()],
+          //     ),
+          //   ),
+          // ),
           Expanded(
             child: Container(
                 color: Colors.grey[200],

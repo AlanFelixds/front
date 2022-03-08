@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:front_flutter/pages/home/home_controller.dart';
-import 'package:front_flutter/utils/customs/custom_menu2.dart';
-import 'package:front_flutter/utils/themes/color_palette.dart';
+import 'package:front_flutter/utils/routes/navigator_content.dart';
+import 'package:front_flutter/utils/widgets/drawer_menu.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetResponsiveView<HomeController> {
@@ -9,21 +9,17 @@ class HomePage extends GetResponsiveView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // drawer: const CustomMenu2(),
-      body: Row(
-        children: [
-          CustomMenu2(
-            routeCall: () => controller.goToSolicitar(),
-          ),
-          Expanded(
-            child: Container(
-              color: ThemeColors.appBackground,
-              child: Text("${controller.user.user}"),
+    return GetRouterOutlet.builder(builder: (context, delegate, currentRoute) {
+      return Scaffold(
+        body: Row(
+          children: [
+            DrawerMenu(),
+            const Flexible(
+              child: Center(child: NavigatorContent()),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }
