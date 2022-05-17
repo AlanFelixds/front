@@ -49,7 +49,7 @@ class SignupPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomTextFormField(icon: const Icon(Icons.alternate_email_rounded), textController: controller.registerUsernameController, label: 'Email'),
+              CustomTextFormField(icon: const Icon(Icons.alternate_email_rounded), textController: controller.registerEmailController, label: 'Email'),
               CustomTextFormField(icon: const Icon(Icons.lock_outline), textController: controller.registerSignupPasswordController, label: 'Password'),
               const SizedBox(height: 10),
               // const Text("Username", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
@@ -110,9 +110,9 @@ class SignupPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Username", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
+              const Text("Email", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.registerUsernameController, label: "Username"),
+              CustomTextFormField(textController: controller.registerEmailController, label: "Email"),
               const SizedBox(height: 10),
               const Text("Password", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),

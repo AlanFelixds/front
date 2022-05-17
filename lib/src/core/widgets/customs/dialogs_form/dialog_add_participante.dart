@@ -4,7 +4,13 @@ import 'package:front_flutter/src/core/widgets/customs/text-form-field/custom_te
 
 class DialogAddParticipante extends StatelessWidget {
   final TextEditingController controller;
-  const DialogAddParticipante({Key? key, required this.controller}) : super(key: key);
+  final VoidCallback onPressed;
+
+  const DialogAddParticipante({
+    Key? key,
+    required this.controller,
+    required this.onPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +32,13 @@ class DialogAddParticipante extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 8),
-                  CustomTextFormField(textController: controller, hint: 'Nome do Participante'),
+                  CustomTextFormField(textController: controller, label: 'Nome do Participante'),
                   const SizedBox(height: 8),
-                  CustomTextFormField(textController: controller, hint: 'Email do Participante'),
+                  CustomTextFormField(textController: controller, label: 'Email do Participante'),
                   const SizedBox(height: 8),
                   Row(
                     children: [
-                      CustomButton(onPressed: () {}, text: 'Add participante', height: 30),
+                      CustomButton(onPressed: onPressed, text: 'Add participante', height: 30),
                     ],
                   ),
                 ],

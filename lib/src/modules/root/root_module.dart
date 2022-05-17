@@ -20,8 +20,8 @@ class RootModule extends Module {
           '/',
           child: (context, args) => const RootPage(),
           children: [
-            ChildRoute('/dashboard/', child: (context, args) => Container(color: Colors.pink)),
-            ChildRoute('/solicitacao/', child: (context, args) => const SolicitacaoPage()),
+            ChildRoute('/dashboard/', child: (context, args) => Container(color: Colors.white)),
+            ChildRoute('/solicitar_certificado/', child: (context, args) => const SolicitacaoPage()),
             ChildRoute('/solicitacoes/', child: (context, args) => const SolicitacoesPage()),
           ],
         ),

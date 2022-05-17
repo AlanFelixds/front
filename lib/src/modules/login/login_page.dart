@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomTextFormField(icon: const Icon(Icons.alternate_email_rounded), textController: controller.loginUsernameController, hint: 'Email'),
+                    CustomTextFormField(icon: const Icon(Icons.alternate_email_rounded), textController: controller.loginEmailController, hint: 'Email'),
                     CustomTextFormField(icon: const Icon(Icons.lock_outline), textController: controller.loginPasswordController, hint: 'Password'),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
               const SizedBox(height: 20),
               const Text("Email", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.loginUsernameController, label: "Email"),
+              CustomTextFormField(textController: controller.loginEmailController, label: "Email"),
               const SizedBox(height: 10),
               const Text("Password", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
@@ -196,9 +196,9 @@ class _LoginPageState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Username", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
+              const Text("Email", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.loginUsernameController, label: "Username"),
+              CustomTextFormField(textController: controller.loginEmailController, label: "Email"),
               const SizedBox(height: 10),
               const Text("Password", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),

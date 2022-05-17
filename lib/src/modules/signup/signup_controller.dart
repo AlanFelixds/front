@@ -7,7 +7,7 @@ class SignupController {
   SignupRepository signupRepository;
   SignupController(this.signupRepository);
 
-  final TextEditingController registerUsernameController = TextEditingController();
+  final TextEditingController registerEmailController = TextEditingController();
   final TextEditingController registerSignupPasswordController = TextEditingController();
 
   String msg = '';
@@ -36,11 +36,11 @@ class SignupController {
 
   Future<void> createUser() async {
     UserModel user = UserModel();
-    user.username = registerUsernameController.text;
+    user.email = registerEmailController.text;
     user.password = registerSignupPasswordController.text;
 
     await signupRepository.register(
-      registerUsernameController.text,
+      registerEmailController.text,
       registerSignupPasswordController.text,
     );
   }

@@ -16,7 +16,6 @@ class SolicitacaoPage extends StatefulWidget {
 
 class _SolicitacaoPageState extends State<SolicitacaoPage> {
   final controller = Modular.get<SolicitacaoController>();
-  RxString nome = "".obs;
 
   @override
   void initState() {
@@ -24,8 +23,6 @@ class _SolicitacaoPageState extends State<SolicitacaoPage> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       controller.buscarDeliveries();
     });
-    // Future.delayed(const Duration(seconds: 3)).then((value) {});
-    // controller.buscarDeliveries();
   }
 
   @override
@@ -53,10 +50,8 @@ class _SolicitacaoPageState extends State<SolicitacaoPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(height: 15),
-                          const Text("Product name", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
                           const SizedBox(height: 5),
-                          CustomTextFormField(textController: controller.itemNameController, label: "Product name"),
+                          CustomTextFormField(textController: controller.itemNameController, label: "Event name"),
                           const SizedBox(height: 10),
                           Row(
                             children: [
@@ -66,7 +61,7 @@ class _SolicitacaoPageState extends State<SolicitacaoPage> {
                                   await controller.buscarDeliveries();
                                 },
                                 height: 25,
-                                text: "New Delivery",
+                                text: "Cadastrar Evento",
                               ),
                             ],
                           ),
@@ -102,7 +97,7 @@ class _SolicitacaoPageState extends State<SolicitacaoPage> {
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return DialogAddParticipante(controller: controller.nomeParticipanteController);
+                                          return DialogAddParticipante(controller: controller.nomeParticipanteController, onPressed: () {});
                                         },
                                       );
                                     },

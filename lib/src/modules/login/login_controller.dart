@@ -12,7 +12,7 @@ class LoginController {
   LoginRepository loginRepository;
   LoginController(this.loginRepository);
 
-  final TextEditingController loginUsernameController = TextEditingController(text: "alan");
+  final TextEditingController loginEmailController = TextEditingController(text: "alan");
   final TextEditingController loginPasswordController = TextEditingController(text: "alan");
 
   final TextEditingController registerUsernameController = TextEditingController();
@@ -25,12 +25,12 @@ class LoginController {
     // final SharedPreferences prefes = await Modular.getAsync<SharedPreferences>();
     final local = Modular.get<Local>();
     UserModel usuario = UserModel();
-    usuario.username = loginUsernameController.text;
+    usuario.email = loginEmailController.text;
     usuario.password = loginPasswordController.text;
 
     try {
       String result = await loginRepository.login(
-        usuario.username!,
+        usuario.email!,
         usuario.password!,
       );
 
@@ -38,7 +38,7 @@ class LoginController {
 
       var payload = utf8.decode(base64.decode(base64.normalize(token)));
       debugPrint(token);
-      debugPrint(jsonDecode(payload)['username']);
+      debugPrint(jsonDecode(payload)['email']);
 
       // prefes.setString('token', result);
       local.save(chave: 'token', valor: result);

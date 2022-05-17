@@ -25,7 +25,7 @@ class CustomTextFormField extends StatelessWidget {
           controller: textController,
           decoration: InputDecoration(
             hintText: hint,
-            label: Text(label ?? ''),
+            label: Text(label ?? '', style: const TextStyle(fontStyle: FontStyle.italic)),
             contentPadding: const EdgeInsets.all(10.0),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.0),
