@@ -8,7 +8,8 @@ class SignupController {
   SignupController(this.signupRepository);
 
   final TextEditingController registerEmailController = TextEditingController();
-  final TextEditingController registerSignupPasswordController = TextEditingController();
+  final TextEditingController registerNameController = TextEditingController();
+  final TextEditingController registerPasswordController = TextEditingController();
 
   String msg = '';
 
@@ -37,15 +38,17 @@ class SignupController {
   Future<void> createUser() async {
     UserModel user = UserModel();
     user.email = registerEmailController.text;
-    user.password = registerSignupPasswordController.text;
+    user.name = registerNameController.text;
+    user.password = registerPasswordController.text;
 
     await signupRepository.register(
       registerEmailController.text,
-      registerSignupPasswordController.text,
+      registerNameController.text,
+      registerPasswordController.text,
     );
   }
 
   goLogin() {
-    Modular.to.pushNamed('/login');
+    Modular.to.navigate('/login');
   }
 }

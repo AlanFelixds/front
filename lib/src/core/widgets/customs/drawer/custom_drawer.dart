@@ -30,6 +30,12 @@ class CustomDrawer extends StatelessWidget {
                       trailing: const Icon(Icons.post_add_rounded),
                     ),
                     MenuListTile(
+                      title: 'Solicitações',
+                      onTap: () => Modular.to.pushNamed('/home/solicitacoes/'),
+                      selected: Modular.to.path.endsWith('/solicitacoes/'),
+                      trailing: const Icon(Icons.list_alt_rounded),
+                    ),
+                    MenuListTile(
                       title: 'Sair',
                       onTap: () => Modular.to.popAndPushNamed('/login'),
                       trailing: const Icon(Icons.logout_rounded),

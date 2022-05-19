@@ -22,8 +22,13 @@ class SolicitacaoController extends GetxController {
 
   Future<void> buscarDeliveries() async {
     deliveries.clear();
-    final result = await solicitacaoRepository.buscarDeliveries();
-    deliveries.addAll(result[0]['deliveries']);
+
+    try {
+      final result = await solicitacaoRepository.buscarDeliveries();
+      deliveries.addAll(result[0]['deliveries']);
+    } catch (e) {
+      debugPrint("Sem eventos cadastrado!!");
+    }
   }
 
   void goToCadastrarEventos() {

@@ -12,11 +12,8 @@ class LoginController {
   LoginRepository loginRepository;
   LoginController(this.loginRepository);
 
-  final TextEditingController loginEmailController = TextEditingController(text: "alan");
+  final TextEditingController loginEmailController = TextEditingController(text: "alan@gmail.com");
   final TextEditingController loginPasswordController = TextEditingController(text: "alan");
-
-  final TextEditingController registerUsernameController = TextEditingController();
-  final TextEditingController registerLoginPasswordController = TextEditingController();
 
   final RxString msg = ''.obs;
   final RxBool blCheckBox = false.obs;

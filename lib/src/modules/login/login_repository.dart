@@ -5,8 +5,8 @@ class LoginRepository {
   LoginRepository(this._webService);
 
   Future<dynamic> login(String username, String password) async {
-    final response = await _webService.post(url: '/client/authenticate/', body: {
-      'username': username,
+    final response = await _webService.post(url: '/login', body: {
+      'email': username,
       'password': password,
     });
     return response;
