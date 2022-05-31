@@ -49,12 +49,10 @@ class SignupPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomTextFormField(icon: const Icon(Icons.alternate_email_rounded), textController: controller.registerEmailController, label: 'Email'),
-              CustomTextFormField(icon: const Icon(Icons.not_listed_location_outlined), textController: controller.registerNameController, label: 'Nome'),
-              CustomTextFormField(icon: const Icon(Icons.lock_outline), textController: controller.registerPasswordController, label: 'Password'),
+              CustomTextFormField(icon: const Icon(Icons.alternate_email_rounded), textController: controller.registerEmailController, hint: 'Email'),
+              CustomTextFormField(icon: const Icon(Icons.not_listed_location_outlined), textController: controller.registerNameController, hint: 'Nome'),
+              CustomTextFormField(icon: const Icon(Icons.lock_outline), textController: controller.registerPasswordController, hint: 'Password'),
               const SizedBox(height: 10),
-              // const Text("Username", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
-
               Row(
                 children: [
                   CustomButton(
@@ -113,14 +111,14 @@ class SignupPage extends StatelessWidget {
             children: [
               const Text("Email", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.registerEmailController, label: "Email"),
+              CustomTextFormField(textController: controller.registerEmailController, hint: "Email"),
               const Text("Nome", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.registerNameController, label: "Nome"),
+              CustomTextFormField(textController: controller.registerNameController, hint: "Nome"),
               const SizedBox(height: 10),
               const Text("Password", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.registerPasswordController, label: "Password"),
+              CustomTextFormField(textController: controller.registerPasswordController, hint: "Password"),
               const SizedBox(height: 20),
               Row(
                 children: [

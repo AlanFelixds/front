@@ -13,48 +13,9 @@ class RootPage extends StatelessWidget {
       body: Row(
         children: [
           MediaQuery.of(context).size.width >= 900 ? const CustomDrawer() : const SizedBox(),
-          // NavigationListener(
-          //   builder: (context, child) {
-          //     return SizedBox(
-          //       width: 300,
-          //       child: Column(
-          //         children: [
-          //           SizedBox(
-          //             width: 250,
-          //             child: Column(
-          //               children: [
-          //                 MenuListTile(
-          //                   title: 'Home',
-          //                   onTap: () => Modular.to.pushNamed('/home/dashboard/'),
-          //                   selected: Modular.to.path.endsWith('/dashboard/'),
-          //                   trailing: const Icon(Icons.home),
-          //                 ),
-          //                 MenuListTile(
-          //                   title: 'Solicitação',
-          //                   onTap: () => Modular.to.pushNamed('/home/solicitacao/'),
-          //                   selected: Modular.to.path.endsWith('/solicitacao/'),
-          //                   trailing: const Icon(Icons.post_add_rounded),
-          //                 ),
-          //                 MenuListTile(
-          //                   title: 'Solicitações',
-          //                   onTap: () => Modular.to.pushNamed('/home/solicitacoes/'),
-          //                   selected: Modular.to.path.endsWith('/solicitacoes/'),
-          //                   trailing: const Icon(Icons.view_list_rounded),
-          //                 ),
-          //                 MenuListTile(
-          //                   title: 'Sair',
-          //                   onTap: () => Modular.to.popAndPushNamed('/login'),
-          //                   trailing: const Icon(Icons.logout_rounded),
-          //                 ),
-          //               ],
-          //             ),
-          //           ),
-          //         ],
-          //       ),
-          //     );
-          //   },
-          // ),
-          const Expanded(child: RouterOutlet())
+          const Expanded(
+            child: RouterOutlet(),
+          )
         ],
       ),
     );

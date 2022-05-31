@@ -9,21 +9,19 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        height: height ?? 40.0,
-        width: width ?? 50.0,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-        ),
-        child: ElevatedButton(
-          onPressed: onPressed,
-          child: Text(
-            text,
-            style: const TextStyle(
-              fontSize: 14,
-              fontStyle: FontStyle.italic,
-            ),
+    return Container(
+      height: height ?? 50.0,
+      width: width ?? 150.0,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+      ),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 14,
+            fontStyle: FontStyle.italic,
           ),
         ),
       ),

@@ -1,5 +1,7 @@
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:front_flutter/src/core/database/interface_web_client.dart';
 import 'package:front_flutter/src/core/exception/login_exception.dart';
+import 'package:front_flutter/src/core/storage/local.dart';
 import 'package:get/get.dart';
 
 class WebClientGet implements IWebClient {
@@ -8,12 +10,14 @@ class WebClientGet implements IWebClient {
   WebClientGet(this._iWebClient);
 
   @override
-  void clientConfiguration() {
+  void clientConfiguration() async {
+    final local = Modular.get<Local>();
+    final token = await local.read(chave: 'token');
     _iWebClient.httpClient.baseUrl = 'http://localhost:5000';
-    _iWebClient.httpClient.timeout = const Duration(milliseconds: 5000);
+    // _iWebClient.httpClient.timeout = const Duration(milliseconds: 5000);
     _iWebClient.httpClient.defaultContentType = 'application/json';
     _iWebClient.httpClient.addAuthenticator((dynamic request) async {
-      Map<String, String> header = {"Authorization": "Beares token"};
+      Map<String, String> header = {"Authorization": "Beares $token"};
       request.headers.addAll(header);
       return request;
     });

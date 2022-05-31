@@ -39,7 +39,7 @@ class WebClientDio implements IWebClient {
       case 200:
         return response.data;
       case 201:
-        return "Requisição feita com sucesso e dados criado com sucesso.";
+        return "Usuario criado com sucesso.";
       case 400:
         throw LoginException(response.data['message']);
       case 401:

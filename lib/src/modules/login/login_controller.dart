@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:front_flutter/src/core/exception/login_exception.dart';
@@ -17,29 +15,29 @@ class LoginController {
 
   final RxString msg = ''.obs;
   final RxBool blCheckBox = false.obs;
+  final RxBool blPassword = true.obs;
 
   Future<bool> login() async {
     // final SharedPreferences prefes = await Modular.getAsync<SharedPreferences>();
     final local = Modular.get<Local>();
-    UserModel usuario = UserModel();
-    usuario.email = loginEmailController.text;
-    usuario.password = loginPasswordController.text;
 
     try {
-      String result = await loginRepository.login(
-        usuario.email!,
-        usuario.password!,
+      final Map<String, dynamic> result = await loginRepository.login(
+        loginEmailController.text,
+        loginPasswordController.text,
       );
 
-      final token = result.split(".")[1];
+      UserModel usuario = UserModel();
+      usuario.email = result['user_email'];
+      usuario.name = result['user_name'];
+      usuario.userRole = result['user_role'];
 
-      var payload = utf8.decode(base64.decode(base64.normalize(token)));
-      debugPrint(token);
-      debugPrint(jsonDecode(payload)['email']);
+      local.save(chave: 'token', valor: result['token']);
+      local.save(chave: 'email', valor: result['user_email']);
 
-      // prefes.setString('token', result);
-      local.save(chave: 'token', valor: result);
+      // debugPrint("${usuario.name}");
       goHome();
+
       return true;
     } on LoginException catch (e) {
       msg.value = e.message;
@@ -51,3 +49,17 @@ class LoginController {
 
   goSignup() => Modular.to.pushNamed('/signup');
 }
+
+
+
+// código guardado
+/*
+
+final token = result.split(".")[1];
+var payload = utf8.decode(base64.decode(base64.normalize(token)));
+debugPrint(token);
+debugPrint(jsonDecode(payload)['user_email']);
+
+// prefes.setString('token', result);
+
+*/

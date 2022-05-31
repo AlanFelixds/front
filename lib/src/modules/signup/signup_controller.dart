@@ -37,15 +37,19 @@ class SignupController {
 
   Future<void> createUser() async {
     UserModel user = UserModel();
-    user.email = registerEmailController.text;
     user.name = registerNameController.text;
+    user.email = registerEmailController.text;
     user.password = registerPasswordController.text;
 
-    await signupRepository.register(
-      registerEmailController.text,
+    final response = await signupRepository.register(
       registerNameController.text,
+      registerEmailController.text,
       registerPasswordController.text,
     );
+
+    if (response == "Usuario criado com sucesso.") {
+      goLogin();
+    }
   }
 
   goLogin() {

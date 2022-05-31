@@ -4,14 +4,14 @@ class CustomTextFormField extends StatelessWidget {
   final Widget? icon;
   final TextEditingController textController;
   final String? hint;
-  final String? label;
+  final bool blPassword;
 
   const CustomTextFormField({
     Key? key,
     required this.textController,
     this.icon,
     this.hint,
-    this.label,
+    this.blPassword = false,
   }) : super(key: key);
 
   @override
@@ -23,28 +23,23 @@ class CustomTextFormField extends StatelessWidget {
         height: 40,
         child: TextFormField(
           controller: textController,
+          cursorColor: Colors.green,
+          obscureText: blPassword ? true : false,
           decoration: InputDecoration(
             hintText: hint,
-            label: Text(label ?? '', style: const TextStyle(fontStyle: FontStyle.italic)),
+            hintStyle: const TextStyle(fontStyle: FontStyle.italic, color: Colors.black),
             contentPadding: const EdgeInsets.all(10.0),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.0),
-              borderSide: const BorderSide(
-                color: Colors.grey,
-                width: 1,
-              ),
+              borderSide: BorderSide(color: Colors.grey[800]!, width: 1),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.0),
-              borderSide: const BorderSide(
-                color: Color(0xFF295cc5),
-                width: 1,
-              ),
+              borderSide: BorderSide(color: Colors.grey[800]!, width: 1),
             ),
             hoverColor: Colors.transparent,
             filled: true,
             fillColor: Colors.white,
-            focusColor: Colors.red,
             suffixIcon: icon,
           ),
         ),

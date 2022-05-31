@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:front_flutter/src/core/themes/color_pallete.dart';
 import 'package:front_flutter/src/core/widgets/customs/button/custom_button.dart';
 import 'package:front_flutter/src/core/widgets/customs/button/custom_elevated_button.dart';
-import 'package:front_flutter/src/core/widgets/customs/dialogs/dialog_message.dart';
+import 'package:front_flutter/src/core/widgets/customs/button/custom_text_button.dart';
 import 'package:front_flutter/src/core/widgets/customs/text-form-field/custom_text_form_field.dart';
 import 'package:front_flutter/src/core/widgets/customs/title/custom_title.dart';
 import 'package:front_flutter/src/modules/login/login_controller.dart';
@@ -26,11 +26,11 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: ThemeColors.white,
       // backgroundColor: Colors.blueGrey[900],
-      body: sizeWidget > 600 ? uiDesktop02() : uiMobile(),
+      body: sizeWidget > 600 ? uiDesktop() : uiMobile(),
     );
   }
 
-  Widget uiDesktop02() {
+  Widget uiDesktop() {
     return Row(
       children: [
         Expanded(
@@ -57,8 +57,26 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomTextFormField(icon: const Icon(Icons.alternate_email_rounded), textController: controller.loginEmailController, hint: 'Email'),
-                    CustomTextFormField(icon: const Icon(Icons.lock_outline), textController: controller.loginPasswordController, hint: 'Password'),
+                    CustomTextFormField(icon: const Icon(Icons.alternate_email_rounded, color: Colors.green), textController: controller.loginEmailController, hint: 'Email'),
+                    CustomTextFormField(
+                      icon: Material(
+                        color: Colors.transparent,
+                        child: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              controller.blPassword.value = !controller.blPassword.value;
+                            });
+                          },
+                          icon: Icon(
+                            controller.blPassword.value ? Icons.lock_outline : Icons.lock_open_rounded,
+                            color: controller.blPassword.value == true ? Colors.green : Colors.grey,
+                          ),
+                        ),
+                      ),
+                      textController: controller.loginPasswordController,
+                      hint: 'Password',
+                      blPassword: controller.blPassword.value,
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -66,91 +84,31 @@ class _LoginPageState extends State<LoginPage> {
                           () {
                             return TextButton.icon(
                               onPressed: () => controller.blCheckBox.value = !controller.blCheckBox.value,
-                              icon: controller.blCheckBox.value ? const Icon(Icons.check_box_rounded) : const Icon(Icons.check_box_outline_blank_rounded),
-                              label: const Text("Remember me"),
+                              icon: controller.blCheckBox.value
+                                  ? const Icon(
+                                      Icons.check_box_rounded,
+                                      color: Colors.green,
+                                    )
+                                  : const Icon(Icons.check_box_outline_blank_rounded, color: Colors.green),
+                              label: const Text("Remember me", style: TextStyle(color: Colors.green)),
                             );
                           },
                         ),
-                        TextButton(
+                        CustomTextButton(
                           onPressed: () {},
-                          child: const Text("Forgot password ?"),
+                          label: "Forgot password ?",
                         ),
                       ],
                     ),
                     CustomElevatedButton(onPressed: () => controller.login(), label: 'Sing in'),
-                    TextButton(onPressed: () => controller.goSignup(), child: const Text('Não possue uma conta ? Clique aqui'))
+                    CustomTextButton(
+                      onPressed: () => controller.goSignup(),
+                      label: "'Não possue uma conta ? Clique aqui'",
+                    ),
                   ],
                 ),
               ),
             ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget uiDesktop() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Expanded(child: Divider(color: Colors.white, indent: 200, endIndent: 20, height: 3)),
-            CustomTitle(text: 'Login'),
-            Expanded(child: Divider(color: Colors.white, indent: 20, endIndent: 200, height: 3)),
-          ],
-        ),
-        const SizedBox(height: 30),
-        Container(
-          width: 500,
-          height: 350,
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            color: Colors.white,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 20),
-              const Text("Email", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
-              const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.loginEmailController, label: "Email"),
-              const SizedBox(height: 10),
-              const Text("Password", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
-              const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.loginPasswordController, label: "Password"),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  CustomButton(
-                      onPressed: () async {
-                        await controller.login() ? null : ScaffoldMessenger.of(context).showSnackBar(DialogMessage.errorMessage(message: controller.msg.value));
-                      },
-                      text: "Entrar"),
-                ],
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text("Não possui uma conta ? "),
-                  TextButton(
-                    onPressed: () => controller.goSignup(),
-                    child: const Text(
-                      "Signup",
-                      style: TextStyle(
-                        color: Colors.blue,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 20),
-            ],
           ),
         ),
       ],
@@ -198,11 +156,11 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               const Text("Email", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.loginEmailController, label: "Email"),
+              CustomTextFormField(textController: controller.loginEmailController, hint: "Email"),
               const SizedBox(height: 10),
               const Text("Password", style: TextStyle(fontSize: 14, fontStyle: FontStyle.italic)),
               const SizedBox(height: 5),
-              CustomTextFormField(textController: controller.loginPasswordController, label: "Password"),
+              CustomTextFormField(textController: controller.loginPasswordController, hint: "Password"),
               const SizedBox(height: 20),
               Row(
                 children: [
@@ -218,14 +176,15 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   const Text("Não possui uma conta ? "),
                   TextButton(
-                      onPressed: () => controller.goSignup(),
-                      child: const Text(
-                        "Signup",
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontSize: 14,
-                        ),
-                      )),
+                    onPressed: () => controller.goSignup(),
+                    child: const Text(
+                      "Signup",
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ],

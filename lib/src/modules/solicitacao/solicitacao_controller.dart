@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:front_flutter/src/core/models/product_model.dart';
+import 'package:front_flutter/src/core/models/event_model.dart';
+import 'package:front_flutter/src/core/models/participant_event_model.dart';
+import 'package:front_flutter/src/core/models/participant_model.dart';
+import 'package:front_flutter/src/core/utils/conversor/date_time.dart';
 import 'package:front_flutter/src/modules/solicitacao/solicitacao_repository.dart';
 import 'package:get/get.dart';
 
@@ -9,25 +12,57 @@ class SolicitacaoController extends GetxController {
   SolicitacaoController(this.solicitacaoRepository);
 
   TextEditingController nomeParticipanteController = TextEditingController();
-  TextEditingController itemNameController = TextEditingController();
+  TextEditingController emailParticipantController = TextEditingController();
+
+  TextEditingController eventNameController = TextEditingController();
+  TextEditingController eventDateController = TextEditingController(text: '2021-12-22 15:32:00');
 
   RxString nome = ''.obs;
-  RxList deliveries = [].obs;
+  RxList<EventModel> events = <EventModel>[].obs;
+  RxList<ParticipantEventModel> participants = <ParticipantEventModel>[].obs;
 
-  Future<void> createDelivery() async {
-    ProductModel product = ProductModel();
-    product.itemName = itemNameController.text;
-    await solicitacaoRepository.createDelivery(product);
+  final GlobalKey<FormState> formEventKey = GlobalKey<FormState>();
+
+  Future<void> createEvent() async {
+    EventModel eventModel = EventModel();
+    eventModel.eventName = eventNameController.text;
+    eventModel.eventDate = UtilsDatetime.stringToDate(eventDateController.text);
+
+    await solicitacaoRepository.createEvent(eventModel);
   }
 
-  Future<void> buscarDeliveries() async {
-    deliveries.clear();
-
+  Future<void> listEvent() async {
+    events.clear();
     try {
-      final result = await solicitacaoRepository.buscarDeliveries();
-      deliveries.addAll(result[0]['deliveries']);
+      final List result = await solicitacaoRepository.listEvent();
+
+      for (var element in result) {
+        events.add(EventModel.fromMap(element));
+      }
     } catch (e) {
-      debugPrint("Sem eventos cadastrado!!");
+      debugPrint("Sem eventos cadastrado!! $e");
+    }
+  }
+
+  Future<void> addParticipant({required String eventID}) async {
+    ParticipantModel participantModel = ParticipantModel();
+    participantModel.nameParticipant = nomeParticipanteController.text;
+    participantModel.emailParticipant = emailParticipantController.text;
+    participantModel.idEvent = eventID;
+
+    await solicitacaoRepository.addParticipant(participantModel);
+  }
+
+  Future<void> listParticipants({required String eventID}) async {
+    participants.clear();
+    try {
+      final result = await solicitacaoRepository.listParticipantsEvent(eventID: eventID);
+      for (var element in result) {
+        participants.add(ParticipantEventModel.fromMap(element));
+      }
+      print(participants[0].name);
+    } catch (e) {
+      debugPrint("Sem participantes cadastrado!! $e");
     }
   }
 

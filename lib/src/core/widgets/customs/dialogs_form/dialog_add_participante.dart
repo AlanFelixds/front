@@ -18,32 +18,40 @@ class DialogAddParticipante extends StatelessWidget {
       backgroundColor: Colors.grey,
       elevation: 3,
       child: Container(
-        width: 400,
+        width: 700,
         height: 300,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(5),
           color: Colors.white,
         ),
-        child: Center(
-          child: SingleChildScrollView(
-            child: SizedBox(
-              width: 300,
-              height: 200,
-              child: Column(
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.grey,
+            borderRadius: BorderRadius.circular(5),
+          ),
+          width: 300,
+          height: 110,
+          child: Column(
+            children: [
+              const SizedBox(height: 8),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  const SizedBox(height: 8),
-                  CustomTextFormField(textController: controller, label: 'Nome do Participante'),
-                  const SizedBox(height: 8),
-                  CustomTextFormField(textController: controller, label: 'Email do Participante'),
-                  const SizedBox(height: 8),
-                  Row(
-                    children: [
-                      CustomButton(onPressed: onPressed, text: 'Add participante', height: 30),
-                    ],
+                  CustomTextFormField(textController: controller, hint: 'Nome do Participante'),
+                  const SizedBox(width: 8),
+                  CustomTextFormField(textController: controller, hint: 'Email do Participante'),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: CustomButton(onPressed: onPressed, text: 'Add participante', height: 30),
                   ),
                 ],
               ),
-            ),
+            ],
           ),
         ),
       ),
