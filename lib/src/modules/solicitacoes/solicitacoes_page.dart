@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
+import 'package:front_flutter/src/core/widgets/customs/button/custom_elevated_button.dart';
+import 'package:front_flutter/src/modules/solicitacoes/solicitacoes_controller.dart';
 
 class SolicitacoesPage extends StatefulWidget {
   const SolicitacoesPage({Key? key}) : super(key: key);
@@ -10,6 +13,8 @@ class SolicitacoesPage extends StatefulWidget {
 class _SolicitacoesPageState extends State<SolicitacoesPage> {
   @override
   Widget build(BuildContext context) {
+    final controller = Modular.get<SolicitacoesController>();
+
     return Scaffold(
       body: Center(
         child: Container(
@@ -57,6 +62,11 @@ class _SolicitacoesPageState extends State<SolicitacoesPage> {
                 },
                 itemCount: 3,
               ),
+              CustomElevatedButton(
+                  label: 'Criar PDF',
+                  onPressed: () {
+                    controller.createPDF();
+                  }),
             ],
           ),
         ),

@@ -103,7 +103,13 @@ class _LoginPageState extends State<LoginPage> {
                     CustomElevatedButton(onPressed: () => controller.login(), label: 'Sing in'),
                     CustomTextButton(
                       onPressed: () => controller.goSignup(),
-                      label: "'Não possue uma conta ? Clique aqui'",
+                      label: "Não possue uma conta ? Clique aqui",
+                    ),
+                    CustomTextButton(
+                      onPressed: () {
+                        Modular.to.navigate('/validation');
+                      },
+                      label: "Validar certificado",
                     ),
                   ],
                 ),

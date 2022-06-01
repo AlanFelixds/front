@@ -13,6 +13,8 @@ import 'package:front_flutter/src/modules/signup/signup_controller.dart';
 import 'package:front_flutter/src/modules/signup/signup_page.dart';
 import 'package:front_flutter/src/modules/signup/signup_repository.dart';
 import 'package:front_flutter/src/modules/unknown/unknown_page.dart';
+import 'package:front_flutter/src/modules/validar_certificado/validar_certificado_controller.dart';
+import 'package:front_flutter/src/modules/validar_certificado/validar_certificado_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppModule extends Module {
@@ -30,15 +32,19 @@ class AppModule extends Module {
         Bind.singleton((i) => LoginController(i())),
         Bind.singleton((i) => LoginRepository(i())),
 
-        //SINGUP
+        //REGISTRO
         Bind.singleton((i) => SignupController(i())),
         Bind.singleton((i) => SignupRepository(i())),
+
+        //VALIDAÇÃO CERTIFICADO
+        Bind.singleton((i) => ValidarCertificadoController()),
       ];
 
   @override
   List<ModularRoute> get routes => [
         ChildRoute('/login', child: (context, args) => const LoginPage(), transition: TransitionType.noTransition),
         ChildRoute('/signup', child: (context, args) => SignupPage(), transition: TransitionType.noTransition),
+        ChildRoute('/validation', child: (context, args) => ValidarCertificadoPage(), transition: TransitionType.noTransition),
         ModuleRoute('/home', module: RootModule(), transition: TransitionType.noTransition),
         WildcardRoute(child: (contex, args) => const UnknownPage(), transition: TransitionType.noTransition),
       ];

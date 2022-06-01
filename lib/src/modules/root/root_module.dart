@@ -5,6 +5,7 @@ import 'package:front_flutter/src/modules/root/root_page.dart';
 import 'package:front_flutter/src/modules/solicitacao/solicitacao_controller.dart';
 import 'package:front_flutter/src/modules/solicitacao/solicitacao_page.dart';
 import 'package:front_flutter/src/modules/solicitacao/solicitacao_repository.dart';
+import 'package:front_flutter/src/modules/solicitacoes/solicitacoes_controller.dart';
 import 'package:front_flutter/src/modules/solicitacoes/solicitacoes_page.dart';
 
 class RootModule extends Module {
@@ -16,6 +17,9 @@ class RootModule extends Module {
 
         //DASHBOARD
         Bind.singleton((i) => DashboardController()),
+
+        //SOLICITAÇÕES
+        Bind.singleton((i) => SolicitacoesController()),
       ];
 
   @override

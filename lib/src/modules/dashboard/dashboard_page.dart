@@ -24,7 +24,7 @@ class DashboardPage extends GetResponsiveView<DashboardController> {
               child: const Center(
                 // child: Text("Nome:"),
                 child: Text(
-                  "Bem vindo, Admin",
+                  "Bem vindo",
                   // "Bem vindo, ${controller.argumentos.name!.capitalizeFirst}",
                   style: TextStyle(
                     fontSize: 20,
