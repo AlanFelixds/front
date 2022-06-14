@@ -3,7 +3,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:front_flutter/src/core/database/interface_web_client.dart';
 import 'package:front_flutter/src/core/database/web_client_dio.dart';
-import 'package:front_flutter/src/core/database/web_client_get.dart';
 import 'package:front_flutter/src/core/storage/local.dart';
 import 'package:front_flutter/src/modules/login/login_controller.dart';
 import 'package:front_flutter/src/modules/login/login_page.dart';

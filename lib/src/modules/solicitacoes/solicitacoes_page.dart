@@ -63,10 +63,11 @@ class _SolicitacoesPageState extends State<SolicitacoesPage> {
                 itemCount: 3,
               ),
               CustomElevatedButton(
-                  label: 'Criar PDF',
-                  onPressed: () {
-                    controller.createPDF();
-                  }),
+                label: 'Criar PDF',
+                onPressed: () {
+                  controller.createPDF();
+                },
+              ),
             ],
           ),
         ),

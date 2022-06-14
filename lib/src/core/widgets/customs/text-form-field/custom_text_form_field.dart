@@ -5,6 +5,7 @@ class CustomTextFormField extends StatelessWidget {
   final TextEditingController textController;
   final String? hint;
   final bool blPassword;
+  final double? width;
 
   const CustomTextFormField({
     Key? key,
@@ -12,6 +13,7 @@ class CustomTextFormField extends StatelessWidget {
     this.icon,
     this.hint,
     this.blPassword = false,
+    this.width,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class CustomTextFormField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: SizedBox(
-        width: 300,
+        width: width ?? 300,
         height: 40,
         child: TextFormField(
           controller: textController,
@@ -27,15 +29,15 @@ class CustomTextFormField extends StatelessWidget {
           obscureText: blPassword ? true : false,
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: const TextStyle(fontStyle: FontStyle.italic, color: Colors.black),
+            hintStyle: TextStyle(fontStyle: FontStyle.italic, color: Colors.grey[400]),
             contentPadding: const EdgeInsets.all(10.0),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.0),
-              borderSide: BorderSide(color: Colors.grey[800]!, width: 1),
+              borderSide: BorderSide(color: Colors.grey[600]!, width: 1),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(5.0),
-              borderSide: BorderSide(color: Colors.grey[800]!, width: 1),
+              borderSide: BorderSide(color: Colors.grey[600]!, width: 1),
             ),
             hoverColor: Colors.transparent,
             filled: true,

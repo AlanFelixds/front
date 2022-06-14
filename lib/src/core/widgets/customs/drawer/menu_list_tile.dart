@@ -21,9 +21,9 @@ class MenuListTile extends StatelessWidget {
       child: ListTile(
         title: Text(title),
         selected: selected ?? false,
-        selectedTileColor: Colors.green[100],
-        selectedColor: Colors.white,
-        hoverColor: Colors.green[800],
+        selectedTileColor: Colors.green[800],
+        selectedColor: selected == true ? Colors.white : Colors.white,
+        hoverColor: selected == true ? Colors.green[600] : Colors.green[800],
         trailing: trailing,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(5),

@@ -25,13 +25,13 @@ class CustomDrawer extends StatelessWidget {
                       trailing: const Icon(Icons.home),
                     ),
                     MenuListTile(
-                      title: 'Solicitar certificado',
-                      onTap: () => Modular.to.navigate('/home/solicitar_certificado/'),
-                      selected: Modular.to.path.endsWith('/solicitar_certificado/'),
+                      title: 'Criar evento',
+                      onTap: () => Modular.to.navigate('/home/evento/'),
+                      selected: Modular.to.path.endsWith('/evento/'),
                       trailing: const Icon(Icons.post_add_rounded),
                     ),
                     MenuListTile(
-                      title: 'Solicitações',
+                      title: 'Eventos',
                       onTap: () => Modular.to.navigate('/home/solicitacoes/'),
                       selected: Modular.to.path.endsWith('/solicitacoes/'),
                       trailing: const Icon(Icons.list_alt_rounded),

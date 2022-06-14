@@ -125,28 +125,6 @@ class _LoginPageState extends State<LoginPage> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Expanded(
-              child: Divider(
-                color: Colors.white,
-                indent: 20,
-                endIndent: 10,
-                thickness: 1,
-              ),
-            ),
-            CustomTitle(text: 'Login'),
-            Expanded(
-              child: Divider(
-                color: Colors.white,
-                indent: 10,
-                endIndent: 20,
-                thickness: 1,
-              ),
-            ),
-          ],
-        ),
         const SizedBox(height: 20),
         Container(
           width: 350,

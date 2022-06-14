@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:front_flutter/src/core/exception/login_exception.dart';
-import 'package:front_flutter/src/core/models/user_model.dart';
+import 'package:front_flutter/src/core/models/usuario_model.dart';
 import 'package:front_flutter/src/core/storage/local.dart';
 import 'package:front_flutter/src/modules/login/login_repository.dart';
 import 'package:get/state_manager.dart';
@@ -27,15 +27,14 @@ class LoginController {
         loginPasswordController.text,
       );
 
-      UserModel usuario = UserModel();
-      usuario.email = result['user_email'];
-      usuario.name = result['user_name'];
-      usuario.userRole = result['user_role'];
+      UsuarioModel usuario = UsuarioModel();
+      usuario.email = result['email'];
+      usuario.nome = result['nome'];
+      usuario.permissao = result['permissao'];
 
       local.save(chave: 'token', valor: result['token']);
-      local.save(chave: 'email', valor: result['user_email']);
+      local.save(chave: 'email', valor: result['email']);
 
-      // debugPrint("${usuario.name}");
       goHome();
 
       return true;

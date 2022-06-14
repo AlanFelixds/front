@@ -24,18 +24,6 @@ class SignupPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          children: const [
-            Expanded(
-              child: Divider(color: Colors.white, indent: 300, endIndent: 20, height: 3),
-            ),
-            CustomTitle(text: 'Signup'),
-            Expanded(
-              child: Divider(color: Colors.white, indent: 20, endIndent: 300, height: 3),
-            ),
-          ],
-        ),
         const SizedBox(height: 30),
         Container(
           width: 300,
@@ -74,28 +62,6 @@ class SignupPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Expanded(
-              child: Divider(
-                color: Colors.white,
-                indent: 20,
-                endIndent: 10,
-                thickness: 1,
-              ),
-            ),
-            CustomTitle(text: 'Signup'),
-            Expanded(
-              child: Divider(
-                color: Colors.white,
-                indent: 10,
-                endIndent: 20,
-                thickness: 1,
-              ),
-            ),
-          ],
-        ),
         const SizedBox(height: 20),
         Container(
           width: 350,

@@ -4,10 +4,10 @@ class LoginRepository {
   final IWebClient _webService;
   LoginRepository(this._webService);
 
-  Future<dynamic> login(String username, String password) async {
+  Future<dynamic> login(String email, String senha) async {
     final response = await _webService.post(url: '/login', body: {
-      'email': username,
-      'password': password,
+      'email': email,
+      'senha': senha,
     });
     return response;
   }

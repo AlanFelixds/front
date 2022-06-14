@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:front_flutter/src/core/models/user_model.dart';
+import 'package:front_flutter/src/core/models/usuario_model.dart';
 import 'package:front_flutter/src/modules/signup/signup_repository.dart';
 
 class SignupController {
@@ -36,10 +36,10 @@ class SignupController {
   // }
 
   Future<void> createUser() async {
-    UserModel user = UserModel();
-    user.name = registerNameController.text;
+    UsuarioModel user = UsuarioModel();
+    user.nome = registerNameController.text;
     user.email = registerEmailController.text;
-    user.password = registerPasswordController.text;
+    user.senha = registerPasswordController.text;
 
     final response = await signupRepository.register(
       registerNameController.text,
