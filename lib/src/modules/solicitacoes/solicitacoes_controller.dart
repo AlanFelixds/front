@@ -1,23 +1,24 @@
-import 'dart:io';
-
-import 'package:pdf/pdf.dart';
-import 'package:pdf/widgets.dart' as pw;
-
+import 'package:flutter/material.dart';
+import 'package:front_flutter/src/core/models/evento_model.dart';
+import 'package:front_flutter/src/modules/solicitacoes/solicitacoes_repository.dart';
 import 'package:get/get.dart';
 
 class SolicitacoesController extends GetxController {
-  void createPDF() async {
-    final pdf = pw.Document();
+  SolicitacoesRepository solicitacoesRepository;
+  SolicitacoesController(this.solicitacoesRepository);
 
-    pdf.addPage(pw.Page(
-        pageFormat: PdfPageFormat.a4,
-        build: (pw.Context context) {
-          return pw.Center(
-            child: pw.Text("Hello World"),
-          ); // Center
-        }));
+  RxList<EventoModel> events = <EventoModel>[].obs;
 
-    final file = File("C:\\Users\\Alan\\Documents\\pdf.pdf");
-    await file.writeAsBytes(await pdf.save());
+  Future<void> listaEvent() async {
+    events.clear();
+    try {
+      final List result = await solicitacoesRepository.listEvent();
+
+      for (var element in result) {
+        events.add(EventoModel.fromMap(element));
+      }
+    } catch (e) {
+      debugPrint("Sem eventos cadastrado!! $e");
+    }
   }
 }

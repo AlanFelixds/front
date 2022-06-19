@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:front_flutter/src/core/enum/status.dart';
 
 class EventoModel {
@@ -32,7 +30,11 @@ class EventoModel {
       cargaHoraria: json['carga_horaria'],
       tipo: json['tipo'],
       palestrante: json['palestrante'],
-      status: json['status'],
+      status: json['status'] == 'analise'
+          ? Status.analise
+          : json['status'] == 'aceito'
+              ? Status.aceito
+              : Status.negado,
     );
   }
 

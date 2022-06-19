@@ -5,6 +5,7 @@ class MenuListTile extends StatelessWidget {
   final VoidCallback onTap;
   final bool? selected;
   final Widget trailing;
+  final String? permissao;
 
   const MenuListTile({
     Key? key,
@@ -12,6 +13,7 @@ class MenuListTile extends StatelessWidget {
     required this.onTap,
     required this.trailing,
     this.selected,
+    this.permissao,
   }) : super(key: key);
 
   @override

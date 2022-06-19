@@ -34,6 +34,7 @@ class LoginController {
 
       local.save(chave: 'token', valor: result['token']);
       local.save(chave: 'email', valor: result['email']);
+      local.save(chave: 'permissao', valor: result['permissao']);
 
       goHome();
 

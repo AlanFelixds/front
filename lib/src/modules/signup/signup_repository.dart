@@ -4,13 +4,13 @@ class SignupRepository {
   final IWebClient _webService;
   SignupRepository(this._webService);
 
-  Future<dynamic> register(String name, String email, String password) async {
+  Future<dynamic> register(String name, String email, String senha) async {
     final response = await _webService.post(
       url: '/signup',
       body: {
-        'name': name,
+        'nome': name,
         'email': email,
-        'password': password,
+        'senha': senha,
       },
     );
     return response;

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:front_flutter/src/core/storage/local.dart';
 import 'package:front_flutter/src/core/widgets/customs/drawer/menu_list_tile.dart';
 
 class CustomDrawer extends StatelessWidget {
@@ -7,6 +8,8 @@ class CustomDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final local = Modular.get<Local>();
+    final permissao = local.read(chave: 'permissao');
     return NavigationListener(
       builder: (context, child) {
         return SizedBox(
@@ -19,7 +22,6 @@ class CustomDrawer extends StatelessWidget {
                   children: [
                     MenuListTile(
                       title: 'Home',
-                      // onTap: () => Modular.to.pushNamed('/home/dashboard/'),
                       onTap: () => Modular.to.navigate('/home/dashboard/'),
                       selected: Modular.to.path.endsWith('/dashboard/'),
                       trailing: const Icon(Icons.home),
@@ -36,6 +38,14 @@ class CustomDrawer extends StatelessWidget {
                       selected: Modular.to.path.endsWith('/solicitacoes/'),
                       trailing: const Icon(Icons.list_alt_rounded),
                     ),
+                    permissao == "dep"
+                        ? MenuListTile(
+                            title: 'Analisar',
+                            onTap: () => Modular.to.navigate('/home/solicitacoes/'),
+                            selected: Modular.to.path.endsWith('/solicitacoes/'),
+                            trailing: const Icon(Icons.list_alt_rounded),
+                          )
+                        : const SizedBox(),
                     MenuListTile(
                       title: 'Sair',
                       onTap: () => Modular.to.popAndPushNamed('/login'),

@@ -7,6 +7,7 @@ import 'package:front_flutter/src/modules/evento/evento_repository.dart';
 import 'package:front_flutter/src/modules/root/root_page.dart';
 import 'package:front_flutter/src/modules/solicitacoes/solicitacoes_controller.dart';
 import 'package:front_flutter/src/modules/solicitacoes/solicitacoes_page.dart';
+import 'package:front_flutter/src/modules/solicitacoes/solicitacoes_repository.dart';
 
 class RootModule extends Module {
   @override
@@ -19,7 +20,8 @@ class RootModule extends Module {
         Bind.singleton((i) => DashboardController()),
 
         //SOLICITAÇÕES
-        Bind.singleton((i) => SolicitacoesController()),
+        Bind.singleton((i) => SolicitacoesController(i())),
+        Bind.singleton((i) => SolicitacoesRepository(i())),
       ];
 
   @override
